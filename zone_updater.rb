@@ -27,7 +27,7 @@ def update_bind_zone(zone_rec_name, ip)
   if serial.to_s.length == 1
     serial = "0#{serial}"
   end
-  new_serial = "#{date.chomp}#{serial.chomp}"
+  new_serial = "#{date.chomp}#{serial}"
   cmd = "sed -i -r -e 's/([0-9]+)(\\s*;\\s*serial*)/#{new_serial}\\2/' #{BIND_ZONE}"
   %x[ #{cmd} ]
 end
