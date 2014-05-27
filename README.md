@@ -10,6 +10,7 @@ This is software complex from 2 applications:
 
 = Installation =
 == Preparations == 
+0. use ruby >= 2.1 ( Set it from RVM )
 1. git clone git@github.com:alter/rb-dyndns.git /opt/rb-dyndns/
 2. edit rb-dyndns.rb
 # Variables
@@ -55,3 +56,14 @@ BIND_ZONE - should be the same as for rb-dyndns.rb
 On the client side set in crontab:
 */10   * * * * user  echo -n '$KEY' | nc $HOST $PORT &> /dev/null
 where $HOST and $PORT of server( the same as in rb-dyndns.rb )
+
+=== Advices for better security ===
+chown -R bind.bind /etc/bind
+chown -R bind.bind /opt/rb-dyndns
+
+Run all scripts from bind user:
+/usr/bin/sudo -u bind /opt/rb-dyndns/rb-dyndns.rb
+/usr/bin/sudo -u bind /opt/rb-dyndns/zone_updater.rb
+
+== Known issues ==
+If you have problems with running scripts from bind user under rvm, just read https://rvm.io/integration/cron
