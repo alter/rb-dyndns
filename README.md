@@ -4,7 +4,7 @@ rb-dyndns
 ruby analog of dyndns
 
 
-This is software complex from 2 applications:
+This is software complex from 2 applications: 
 1. TCP Server which gets request for update from clients and updates IPs in sqlite database.
 request for update - it's just a simple key(hex 32 bits)
 2. Bind zone updater which gets records from sqlite database, updates A zones and serials in zone file and makes "rndc reload"
