@@ -1,0 +1,4 @@
+1. add config file and move all variables to that config
+2. add auto-starting scripts
+3. add auto insert of example record to db
+4. add trigger which will update 'update_at' field in the table 'accounts'

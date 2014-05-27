@@ -6,6 +6,7 @@ ruby analog of dyndns
 
 This is software complex from 2 applications:
 1. TCP Server which gets request for update from clients and updates IPs in sqlite database.
+request for update - it's just a simple key(hex 32 bits)
 2. Bind zone updater which gets records from sqlite database, updates A zones and serials in zone file and makes "rndc reload"
 
 = Installation =
@@ -37,6 +38,7 @@ You have to insert records for hosts which uses dynamic addresses, for example:
 insert into accounts(key, ip, domain, zone_rec_name) values ('098f6bcd4621d373cade4e832627b4f6', '127.0.0.1', 'test.com', 'test');
 
 key - must have following format [a-z0-9]{32} (just generate md5sum from random phrase).
+zone_rec_name - this is a first column's value('test') from point '3'
 
 6. edit zone_updater.rb
 # Variables
@@ -66,4 +68,5 @@ Run all scripts from bind user:
 /usr/bin/sudo -u bind /opt/rb-dyndns/zone_updater.rb
 
 == Known issues ==
-If you have problems with running scripts from bind user under rvm, just read https://rvm.io/integration/cron
+1. If you have problems with running scripts from bind user under rvm, just read https://rvm.io/integration/cron
+2. There is no auto-starting script, just add /usr/bin/sudo -u bind /opt/rb-dyndns/rb-dyndns.rb to /etc/rc.local
