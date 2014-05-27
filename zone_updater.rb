@@ -4,7 +4,7 @@ require 'sqlite3'
 
 # Variables
 DB = "#{File.dirname(Process.argv0)}/db.sqlite3"
-BIND_ZONE = '/etc/bind/itsb.pro'
+BIND_ZONE = '/etc/bind/example.com'
 
 # Code part
 if !File.exists?(DB)
